@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class RightRotationChecker {
+
+    public static int isRightRotation(String word1, String word2) {
+        // Check if lengths are different, if so, they cannot be rotations
+        if (word1.length() != word2.length()) {
+            return -1;
+        }
+        
+        // Concatenate word1 with itself
+        String concatenated = word1 + word1;
+        
+        // Check if word2 is a substring of the concatenated string
+        if (concatenated.contains(word2)) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the two words
+        System.out.print("Enter the first word: ");
+        String word1 = scanner.nextLine();
+
+        System.out.print("Enter the second word: ");
+        String word2 = scanner.nextLine();
+
+        // Check if the second word is a right rotation of the first word
+        int result = isRightRotation(word1, word2);
+
+        // Print the result
+        System.out.println(result);
+    }
+}

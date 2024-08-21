@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class DigitCounter {
+
+    public static int countSpecificDigit(long data, int digit) {
+        int count = 0;
+
+        // Count occurrences of the specific digit
+        while (data > 0) {
+            int currentDigit = (int) (data % 10);  // Extract the last digit
+            if (currentDigit == digit) {
+                count++;
+            }
+            data /= 10;  // Remove the last digit
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read input data and digit
+        System.out.print("Enter the data and digit separated by a space: ");
+        long data = scanner.nextLong();
+        int digit = scanner.nextInt();
+
+        // Get the count of the specific digit
+        int result = countSpecificDigit(data, digit);
+
+        // Print the result
+        System.out.println(result);
+    }
+}

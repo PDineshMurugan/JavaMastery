@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class DataEncryptor {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the character and the key
+        System.out.print("Enter the character and the key: ");
+        char ch = scanner.next().charAt(0);
+        int key = scanner.nextInt();
+
+        char encryptedChar = ch;
+
+        // Encrypt the character based on its case
+        if (Character.isUpperCase(ch)) {
+            encryptedChar = (char) ('A' + (ch - 'A' + key) % 26);
+        } else if (Character.isLowerCase(ch)) {
+            encryptedChar = (char) ('a' + (ch - 'a' + key) % 26);
+        }
+
+        // Output the result
+        System.out.println(encryptedChar);
+    }
+}
+
+

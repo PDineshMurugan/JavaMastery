@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class EmployeeRatingGrade {
+
+    public static char findERG(int ERP) {
+        if (ERP >= 30 && ERP <= 50) {
+            return 'D';
+        } else if (ERP >= 51 && ERP <= 60) {
+            return 'C';
+        } else if (ERP >= 61 && ERP <= 80) {
+            return 'B';
+        } else if (ERP >= 81 && ERP <= 100) {
+            return 'A';
+        } else {
+            // If ERP is out of the specified range, return an invalid character.
+            return 'X'; // 'X' indicates an invalid ERP
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the employee rating point (ERP)
+        System.out.print("Enter the Employee Rating Point (ERP): ");
+        int ERP = scanner.nextInt();
+
+        // Find the Employee Rating Grade (ERG)
+        char ERG = findERG(ERP);
+
+        // Print the result
+        System.out.println(ERG);
+    }
+}

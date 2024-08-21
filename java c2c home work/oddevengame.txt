@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class OddEvenArranger {
+
+    public static void arrangeOddEven(int[] arr) {
+        int n = arr.length;
+        int[] result = new int[n];
+        int evenIndex = 0;
+        int oddIndex = n - 1;
+
+        // Arrange even numbers at the beginning and odd numbers at the end
+        for (int i = 0; i < n; i++) {
+            if (arr[i] % 2 == 0) {
+                result[evenIndex] = arr[i];
+                evenIndex++;
+            } else {
+                result[oddIndex] = arr[i];
+                oddIndex--;
+            }
+        }
+
+        // Print the arranged array
+        for (int i = 0; i < n; i++) {
+            System.out.print(result[i] + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the size of the list
+        int num = scanner.nextInt();
+        int[] arr = new int[num];
+
+        // Read the values of the list
+        for (int i = 0; i < num; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        // Arrange the list such that all the odd numbers come after the even numbers
+        arrangeOddEven(arr);
+    }
+}

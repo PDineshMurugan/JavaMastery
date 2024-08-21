@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class SquarePlotCounter {
+
+    public static int countSquarePlots(int[] areas) {
+        int count = 0;
+
+        // Iterate through each area using a traditional for loop
+        for (int i = 0; i < areas.length; i++) {
+            int area = areas[i];
+            // Check if the area is a perfect square
+            int sqrt = (int) Math.sqrt(area);
+            if (sqrt * sqrt == area) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the number of plots
+        System.out.print("Enter the number of plots: ");
+        int numOfPlots = scanner.nextInt();
+
+        // Input the areas of the plots
+        System.out.print("Enter the areas of the plots: ");
+        int[] areas = new int[numOfPlots];
+        for (int i = 0; i < numOfPlots; i++) {
+            areas[i] = scanner.nextInt();
+        }
+
+        // Count the number of square plots
+        int squarePlotCount = countSquarePlots(areas);
+
+        // Output the result
+        System.out.println("Number of square-shaped plots: " + squarePlotCount);
+    }
+}

@@ -1,0 +1,25 @@
+public class DistanceCalculator {
+
+    public static int findTotalDistance(int n, int[] arr) {
+        int totalDistance = 0;
+        
+        // Iterate through the array starting from the second element
+        for (int i = 1; i < n; i++) {
+            // Calculate the absolute difference between adjacent elements
+            int distance = Math.abs(arr[i] - arr[i - 1]);
+            // Add the distance to the total
+            totalDistance += distance;
+        }
+        
+        return totalDistance;
+    }
+
+    public static void main(String[] args) {
+        // Example input
+        int[] arr = {10, 11, 7, 12, 14};
+        int n = arr.length;
+
+        // Calculate and print the total distance
+        System.out.println(findTotalDistance(n, arr)); // Output: 12
+    }
+}

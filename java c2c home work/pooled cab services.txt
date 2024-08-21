@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class CabService {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the number of employees and the range
+        int num = scanner.nextInt();
+        int start = scanner.nextInt();
+        int end = scanner.nextInt();
+
+        // Read the distances of the employees
+        int[] distances = new int[num];
+        for (int i = 0; i < num; i++) {
+            distances[i] = scanner.nextInt();
+        }
+
+        // Array to store the distances within the range
+        int[] result = new int[num];
+        int count = 0;
+
+        // Iterate through the distances and check if they fall within the given range
+        for (int i = 0; i < num; i++) {
+            if (distances[i] >= start && distances[i] <= end) {
+                result[count] = distances[i];
+                count++;
+            }
+        }
+
+        // Print the result
+        if (count > 0) {
+            for (int i = 0; i < count; i++) {
+                System.out.print(result[i] + " ");
+            }
+        } else {
+            System.out.print(-1);
+        }
+    }
+}

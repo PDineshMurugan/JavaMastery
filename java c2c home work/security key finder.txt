@@ -1,0 +1,30 @@
+public class SecurityKeyFinder {
+
+    public static int findSecurityKey(long data) {
+        int[] digitCount = new int[10];  // Array to count occurrences of each digit (0-9)
+
+        // Count occurrences of each digit
+        while (data > 0) {
+            int digit = (int) (data % 10);  // Extract the last digit
+            digitCount[digit]++;
+            data /= 10;  // Remove the last digit
+        }
+
+        // Count the number of digits that repeat
+        int repeatCount = 0;
+        for (int i = 0; i < 10; i++) {
+            if (digitCount[i] > 1) {
+                repeatCount++;
+            }
+        }
+
+        // Return the security key or -1 if no digits repeat
+        return repeatCount > 0 ? repeatCount : -1;
+    }
+
+    public static void main(String[] args) {
+        long data = 578378923;  // Example input
+        int result = findSecurityKey(data);  // Call the function to get the security key
+        System.out.println(result);  // Print the result
+    }
+}

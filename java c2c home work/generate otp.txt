@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class OTPGenerator {
+
+    // Function to check if a number is prime
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Function to find the smallest prime in the range
+    public static int findSmallestPrime(int start, int end) {
+        for (int i = start; i <= end; i++) {
+            if (isPrime(i)) {
+                return i;
+            }
+        }
+        return -1; // No prime found in the range
+    }
+
+    // Function to find the largest prime in the range
+    public static int findLargestPrime(int start, int end) {
+        for (int i = end; i >= start; i--) {
+            if (isPrime(i)) {
+                return i;
+            }
+        }
+        return -1; // No prime found in the range
+    }
+
+    // Function to find the OTP
+    public static int findOTP(int firstNumber, int secondNumber) {
+        // Ensure firstNumber is smaller than secondNumber
+        if (firstNumber > secondNumber) {
+            int temp = firstNumber;
+            firstNumber = secondNumber;
+            secondNumber = temp;
+        }
+
+        int smallestPrime = findSmallestPrime(firstNumber, secondNumber);
+        int largestPrime = findLargestPrime(firstNumber, secondNumber);
+
+        // Calculate OTP
+        int otp = smallestPrime + largestPrime;
+        return otp;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input two numbers from the user
+        System.out.print("Enter the first number: ");
+        int firstNumber = scanner.nextInt();
+        System.out.print("Enter the second number: ");
+        int secondNumber = scanner.nextInt();
+
+        // Find the OTP and print it
+        int otp = findOTP(firstNumber, secondNumber);
+        System.out.println("OTP: " + otp);
+    }
+}
